@@ -6,11 +6,11 @@ function createMockS3 () {
     var ee = new events.EventEmitter()
 
     ee.send = function send (cb) {
-      opts['Body'].pipe(concat(function (body) {
+      opts.Body.pipe(concat(function (body) {
         ee.emit('httpUploadProgress', { total: body.length })
         cb(null, {
-          'Location': 'mock-location',
-          'ETag': 'mock-etag'
+          Location: 'mock-location',
+          ETag: 'mock-etag'
         })
       }))
     }

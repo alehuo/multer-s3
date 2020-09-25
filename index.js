@@ -28,23 +28,20 @@ function defaultKey (req, file, cb) {
 
 function autoContentType (req, file, cb) {
   file.stream.once('data', function (firstChunk) {
-    var type = fileType(firstChunk)
-    var mime
-
-    if (type) {
-      mime = type.mime
-    } else if (isSvg(firstChunk)) {
-      mime = 'image/svg+xml'
-    } else {
-      mime = 'application/octet-stream'
-    }
-
-    var outStream = new stream.PassThrough()
-
-    outStream.write(firstChunk)
-    file.stream.pipe(outStream)
-
-    cb(null, mime, outStream)
+    fileType.fromBuffer(firstChunk).then(type => {
+      let mime = null
+      if (type) {
+        mime = type.mime
+      } else if (isSvg(firstChunk)) {
+        mime = 'image/svg+xml'
+      } else {
+        mime = 'application/octet-stream'
+      }
+      var outStream = new stream.PassThrough()
+      outStream.write(firstChunk)
+      file.stream.pipe(outStream)
+      cb(null, mime, outStream)
+    }).catch(err => cb(err))
   })
 }
 

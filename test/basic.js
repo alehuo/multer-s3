@@ -48,7 +48,7 @@ function submitForm (multer, form, cb) {
 
 describe('Multer S3', function () {
   it('is exposed as a function', function () {
-    assert.equal(typeof multerS3, 'function')
+    assert.strictEqual(typeof multerS3, 'function')
   })
 
   INVALID_OPTIONS.forEach(function (testCase) {
@@ -75,14 +75,14 @@ describe('Multer S3', function () {
     submitForm(parser, form, function (err, req) {
       assert.ifError(err)
 
-      assert.equal(req.body.name, 'Multer')
+      assert.strictEqual(req.body.name, 'Multer')
 
-      assert.equal(req.file.fieldname, 'image')
-      assert.equal(req.file.originalname, 'ffffff.png')
-      assert.equal(req.file.size, 68)
-      assert.equal(req.file.bucket, 'test')
-      assert.equal(req.file.etag, 'mock-etag')
-      assert.equal(req.file.location, 'mock-location')
+      assert.strictEqual(req.file.fieldname, 'image')
+      assert.strictEqual(req.file.originalname, 'ffffff.png')
+      assert.strictEqual(req.file.size, 68)
+      assert.strictEqual(req.file.bucket, 'test')
+      assert.strictEqual(req.file.etag, 'mock-etag')
+      assert.strictEqual(req.file.location, 'mock-location')
 
       done()
     })
@@ -102,15 +102,15 @@ describe('Multer S3', function () {
     submitForm(parser, form, function (err, req) {
       assert.ifError(err)
 
-      assert.equal(req.body.name, 'Multer')
+      assert.strictEqual(req.body.name, 'Multer')
 
-      assert.equal(req.file.fieldname, 'image')
-      assert.equal(req.file.originalname, 'ffffff.png')
-      assert.equal(req.file.size, 68)
-      assert.equal(req.file.bucket, 'test')
-      assert.equal(req.file.etag, 'mock-etag')
-      assert.equal(req.file.location, 'mock-location')
-      assert.equal(req.file.serverSideEncryption, 'AES256')
+      assert.strictEqual(req.file.fieldname, 'image')
+      assert.strictEqual(req.file.originalname, 'ffffff.png')
+      assert.strictEqual(req.file.size, 68)
+      assert.strictEqual(req.file.bucket, 'test')
+      assert.strictEqual(req.file.etag, 'mock-etag')
+      assert.strictEqual(req.file.location, 'mock-location')
+      assert.strictEqual(req.file.serverSideEncryption, 'AES256')
 
       done()
     })
@@ -130,15 +130,15 @@ describe('Multer S3', function () {
     submitForm(parser, form, function (err, req) {
       assert.ifError(err)
 
-      assert.equal(req.body.name, 'Multer')
+      assert.strictEqual(req.body.name, 'Multer')
 
-      assert.equal(req.file.fieldname, 'image')
-      assert.equal(req.file.originalname, 'ffffff.png')
-      assert.equal(req.file.size, 68)
-      assert.equal(req.file.bucket, 'test')
-      assert.equal(req.file.etag, 'mock-etag')
-      assert.equal(req.file.location, 'mock-location')
-      assert.equal(req.file.serverSideEncryption, 'aws:kms')
+      assert.strictEqual(req.file.fieldname, 'image')
+      assert.strictEqual(req.file.originalname, 'ffffff.png')
+      assert.strictEqual(req.file.size, 68)
+      assert.strictEqual(req.file.bucket, 'test')
+      assert.strictEqual(req.file.etag, 'mock-etag')
+      assert.strictEqual(req.file.location, 'mock-location')
+      assert.strictEqual(req.file.serverSideEncryption, 'aws:kms')
 
       done()
     })
@@ -158,16 +158,16 @@ describe('Multer S3', function () {
     submitForm(parser, form, function (err, req) {
       assert.ifError(err)
 
-      assert.equal(req.body.name, 'Multer')
+      assert.strictEqual(req.body.name, 'Multer')
 
-      assert.equal(req.file.fieldname, 'image')
-      assert.equal(req.file.contentType, 'image/png')
-      assert.equal(req.file.originalname, 'ffffff.png')
-      assert.equal(req.file.size, 68)
-      assert.equal(req.file.bucket, 'test')
-      assert.equal(req.file.etag, 'mock-etag')
-      assert.equal(req.file.location, 'mock-location')
-      assert.equal(req.file.serverSideEncryption, 'aws:kms')
+      assert.strictEqual(req.file.fieldname, 'image')
+      assert.strictEqual(req.file.contentType, 'image/png')
+      assert.strictEqual(req.file.originalname, 'ffffff.png')
+      assert.strictEqual(req.file.size, 68)
+      assert.strictEqual(req.file.bucket, 'test')
+      assert.strictEqual(req.file.etag, 'mock-etag')
+      assert.strictEqual(req.file.location, 'mock-location')
+      assert.strictEqual(req.file.serverSideEncryption, 'aws:kms')
 
       done()
     })
@@ -187,16 +187,16 @@ describe('Multer S3', function () {
     submitForm(parser, form, function (err, req) {
       assert.ifError(err)
 
-      assert.equal(req.body.name, 'Multer')
+      assert.strictEqual(req.body.name, 'Multer')
 
-      assert.equal(req.file.fieldname, 'image')
-      assert.equal(req.file.contentType, 'image/svg+xml')
-      assert.equal(req.file.originalname, 'test.svg')
-      assert.equal(req.file.size, 100)
-      assert.equal(req.file.bucket, 'test')
-      assert.equal(req.file.etag, 'mock-etag')
-      assert.equal(req.file.location, 'mock-location')
-      assert.equal(req.file.serverSideEncryption, 'aws:kms')
+      assert.strictEqual(req.file.fieldname, 'image')
+      assert.strictEqual(req.file.contentType, 'image/svg+xml')
+      assert.strictEqual(req.file.originalname, 'test.svg')
+      assert.strictEqual(req.file.size, 100)
+      assert.strictEqual(req.file.bucket, 'test')
+      assert.strictEqual(req.file.etag, 'mock-etag')
+      assert.strictEqual(req.file.location, 'mock-location')
+      assert.strictEqual(req.file.serverSideEncryption, 'aws:kms')
 
       done()
     })
