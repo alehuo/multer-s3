@@ -3,13 +3,13 @@ module.exports = {
     commonjs: true,
     es6: true,
     node: true,
+    mocha: true
   },
-  extends: [
-    'airbnb-base',
-  ],
+  extends: ["airbnb-base", "plugin:mocha/recommended"],
+  plugins: ["mocha"],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
     ecmaVersion: 2018,
@@ -18,5 +18,7 @@ module.exports = {
     "no-underscore-dangle": "off",
     "func-names": "off",
     "consistent-return": "off",
+    "mocha/no-mocha-arrows": "off",
+    "mocha/no-setup-in-describe": "off",
   },
 };
