@@ -1,24 +1,24 @@
-var events = require('events')
-var concat = require('concat-stream')
+const events = require('events');
+const concat = require('concat-stream');
 
-function createMockS3 () {
-  function upload (opts) {
-    var ee = new events.EventEmitter()
+function createMockS3() {
+  function upload(opts) {
+    const ee = new events.EventEmitter();
 
-    ee.send = function send (cb) {
-      opts.Body.pipe(concat(function (body) {
-        ee.emit('httpUploadProgress', { total: body.length })
+    ee.send = function send(cb) {
+      opts.Body.pipe(concat((body) => {
+        ee.emit('httpUploadProgress', { total: body.length });
         cb(null, {
           Location: 'mock-location',
-          ETag: 'mock-etag'
-        })
-      }))
-    }
+          ETag: 'mock-etag',
+        });
+      }));
+    };
 
-    return ee
+    return ee;
   }
 
-  return { upload: upload }
+  return { upload };
 }
 
-module.exports = createMockS3
+module.exports = createMockS3;
