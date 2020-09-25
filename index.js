@@ -20,13 +20,13 @@ const defaultStorageClass = staticValue('STANDARD');
 const defaultSSE = staticValue(null);
 const defaultSSEKMS = staticValue(null);
 
-function defaultKey(req, file, cb) {
+function defaultKey(_req, _file, cb) {
   crypto.randomBytes(16, (err, raw) => {
     cb(err, err ? undefined : raw.toString('hex'));
   });
 }
 
-function autoContentType(req, file, cb) {
+function autoContentType(_req, file, cb) {
   file.stream.once('data', (firstChunk) => {
     fileType.fromBuffer(firstChunk).then((type) => {
       let mime = null;
@@ -203,7 +203,7 @@ S3Storage.prototype._handleFile = function (req, file, cb) {
   });
 };
 
-S3Storage.prototype._removeFile = function (req, file, cb) {
+S3Storage.prototype._removeFile = function (_req, file, cb) {
   this.s3.deleteObject({ Bucket: file.bucket, Key: file.key }, cb);
 };
 
