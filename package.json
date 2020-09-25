@@ -4,7 +4,9 @@
   "description": "Streaming multer storage engine for AWS S3",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/basic.js"
+    "test": "mocha test/basic.js",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "eslint '**/*.js' --fix"
   },
   "repository": {
     "type": "git",
